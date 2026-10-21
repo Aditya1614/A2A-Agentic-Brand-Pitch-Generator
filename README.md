@@ -14,9 +14,13 @@ The **Agentic Pitch Generator** coordinates specialized AI agents in a structure
 
 ## Application Interface
 
-| Human-in-the-Loop Review Gate (`input_required`) | Completed Multi-Agent Pitch Package (`completed`) |
-| :---: | :---: |
-| ![HITL Approval Gate](docs/images/hitl_approval_gate.png) | ![Completed Pitch Package](docs/images/completed_pitch_package.png) |
+| Human-in-the-Loop Review Gate (`input_required`) | 
+| :---: |
+| ![HITL Approval Gate](docs/images/hitl_approval_gate.png) |
+
+| Completed Multi-Agent Pitch Package (`completed`) |
+| :---: |
+ ![Completed Pitch Package](docs/images/completed_pitch_package.png) |
 
 ---
 
