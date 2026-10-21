@@ -18,9 +18,10 @@ The **Agentic Pitch Generator** coordinates specialized AI agents in a structure
 | :---: |
 | ![HITL Approval Gate](docs/images/hitl_approval_gate.png) |
 
-| Completed Multi-Agent Pitch Package (`completed`) |
-| :---: |
- ![Completed Pitch Package](docs/images/completed_pitch_package.png) |
+<p align="center">
+  <b>Completed Multi-Agent Pitch Package (<code>completed</code>)</b><br>
+  <img src="docs/images/completed_pitch_package.png" alt="Completed Pitch Package" width="100%">
+</p>
 
 ---
 
