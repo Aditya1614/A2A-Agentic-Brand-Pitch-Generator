@@ -95,6 +95,26 @@ The codebase connects directly to the following Google Cloud and enterprise serv
 * **SHA-256 Prompt Caching (`PromptCacheManager`)**: Hashes invariant static prefixes (e.g. house style guidelines) with TTL validation to optimize prompt token reuse.
 * **Model Tier Routing (`select_model_strategy`)**: Dynamically routes workloads across 5 tiers (`flash`, `pro`, `low`, `high`, `local`).
 
+### Empirical Tokenomics Benchmark
+
+Evaluated on a 10-turn campaign ideation session for *"Flying skateboards for cats"* with static house brand guidelines:
+
+| Optimization Stage | Turns | Token Count | Efficiency / Behavior |
+| :--- | :---: | :---: | :--- |
+| **Raw Unoptimized Session** | 10 turns | **213 tokens** | Baseline dialog history |
+| **Static Prefix (`brand-guidelines`)** | 1 skill | **204 tokens** | House style constraints |
+| **Total Baseline Input** | 11 items | **417 tokens** | Unoptimized prompt payload |
+| **After Memory Compression** | 3 turns | **155 tokens** | 1 system summary + last 2 turns verbatim |
+| **After Sliding-Window Pruning** | 3 turns | **155 tokens** | Constrained to `max_turns=4` & budget `max_tokens=250` |
+| **Total Turn Savings** | — | **58 tokens saved** | **27.2% reduction on conversation history** |
+
+#### Prompt Cache Lifecycle (SHA-256 Key: `6083123a...0c79`)
+* **Pass 1 (Cold Cache)**: `cache_hit: False` | `saved_tokens: 0` (Computes and stores SHA-256 digest)
+* **Pass 2 (Warm Cache)**: `cache_hit: True` | `saved_tokens: 204 tokens` (Direct cache hit, 100% prefix reuse)
+
+#### Model Tier Strategy
+* **Selected Tier**: `flash` (`gemini-3.8-flash`) — Target: `low_latency_throughput`, Cost: `low`, Thinking Budget: `0`
+
 ---
 
 ## Local Setup & Execution
